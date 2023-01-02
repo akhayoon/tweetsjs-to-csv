@@ -26,18 +26,13 @@ const tweets_final = tweets.tweets
   })
   .map((t) => ({ tweet: t.tweet.full_text, date: t.tweet.created_at }))
   .sort((a, b) => new Date(a.date) - new Date(b.date));
-console.log(tweets_final.length);
-
-const half = Math.ceil(list.length / 2);
-
-const firstHalf = list.slice(0, half);
-const secondHalf = list.slice(half);
 
 const writer = csvWriter.createObjectCsvWriter({
   path: path.resolve(__dirname, 'tweets.csv'),
   header: [{ id: 'tweet', title: 'tweet' }],
 });
 
-writer.writeRecords(firsthalf).then(() => {
+writer.writeRecords(tweets_final).then(() => {
   console.log('Done!');
 });
+console.log(tweets_final.length);
