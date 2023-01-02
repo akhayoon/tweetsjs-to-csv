@@ -6,13 +6,6 @@ const path = require('path');
 
 const csvWriter = require('csv-writer');
 
-tweets.tweets.forEach((obj) => {
-  const { tweet } = obj;
-  if (!tweet.in_reply_to_screen_name) {
-    console.log(tweet.full_text);
-  }
-});
-
 const tweets_final = tweets.tweets
   .filter((t) => {
     if (
